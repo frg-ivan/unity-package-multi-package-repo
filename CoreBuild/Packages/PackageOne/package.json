@@ -1,6 +1,6 @@
 {
 	"name": "@frg-ivan/com.company.core.packageone",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"displayName": "PackageOne",
 	"description": "PackageOne description.",
 	"keywords": [],
@@ -9,10 +9,9 @@
 		"registry": "https://npm.pkg.github.com/@frg-ivan"
 	},
 	"scripts": {
-		"info" : "echo %npm_package_version%",
-		"patch": "(npm version patch --no-git-tag-version -m \"[RELEASE][PATCH] %npm_package_name%@%s\") & (git tag v%npm_package_version%)",
-		"minor": "npm version minor -m \"[RELEASE][MINOR] %npm_package_name%@%s\"",
-		"minor": "npm version minor -m \"[RELEASE][MINOR] %npm_package_name%@%s\"",
+		"info": "echo %npm_package_version%",
+		"patch": "(npm version patch --no-git-tag-version) & (git tag -a v%npm_package_version -m \"[RELEASE][PATCH] %npm_package_name%@%s\")",
+		"minor": "(npm version minor --no-git-tag-version) & (git tag -a v%npm_package_version -m \"[RELEASE][MINOR] %npm_package_name%@%s\")",
 		"major": "npm version major -m \"[RELEASE][MAJOR] %npm_package_name%@%s\"",
 		"publish": "(git push --quiet) & (git push --tags --quiet) & (echo Published %npm_package_name%@%npm_package_version%)"
 	},
