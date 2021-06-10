@@ -18,7 +18,7 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: '@frg-ivan'
       - run: npm install
-      - run: npm publish
+      - run: npm publish ./CoreBuild/Packages/PackageOne
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
