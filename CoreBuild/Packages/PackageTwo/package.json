@@ -1,6 +1,6 @@
 {
 	"name": "@frg-ivan/com.company.core.packagetwo",
-	"version": "0.0.0",
+	"version": "0.2.0",
 	"displayName": "PackageTwo",
 	"description": "PackageTwo description.",
 	"keywords": [],
@@ -9,8 +9,9 @@
 		"registry": "https://npm.pkg.github.com/@frg-ivan"
 	},
 	"scripts": {
-		"patch": "npm version patch -m \"[RELEASE][PATCH] %npm_package_name%@%s\"",
-		"minor": "npm version minor -m \"[RELEASE][MINOR] %npm_package_name%@%s\"",
+		"info": "echo %npm_package_version%",
+		"patch": "(npm version patch --no-git-tag-version) & (git add -A && git commit -m \"[RELEASE][PATCH] %npm_package_name%@%npm_package_version%\")&(git tag -a v%npm_package_version% -m \"v%npm_package_version%\")",
+		"minor": "(npm version minor --no-git-tag-version) & (git add -A && git commit -m \"[RELEASE][MINOR] %npm_package_name%@%npm_package_version%\")&(git tag -a v%npm_package_version% -m \"v%npm_package_version%\")",
 		"major": "npm version major -m \"[RELEASE][MAJOR] %npm_package_name%@%s\"",
 		"publish": "(git push --quiet) & (git push --tags --quiet) & (echo Published %npm_package_name%@%npm_package_version%)"
 	},
