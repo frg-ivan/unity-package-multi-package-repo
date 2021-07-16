@@ -3,8 +3,8 @@ name: Publish package to Github Packages registry
 on:
   push:
     #Triggered when new tags pushed upstream (tags must have semver format)
-    tags:
-      - 'v*.*.*'
+#    tags:
+#      - 'v*.*.*@*'
 
 jobs:
   publish-gpr:
@@ -17,8 +17,12 @@ jobs:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
           scope: '@frg-ivan'
+          
+      - run: echo "PACKAGE_TO_PUBLISH=$(git tag --points-at HEAD | cut --complement -c 1-17)" >> $GITHUB_ENV
+      - run: echo $PACKAGE_TO_PUBLISH
+      - run: cd ./$PACKAGE_TO_PUBLISH
+      - run: ls
       - run: npm install
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
