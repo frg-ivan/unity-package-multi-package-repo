@@ -9,6 +9,7 @@
 		"registry": "https://npm.pkg.github.com/@frg-ivan"
 	},
 	"scripts": {
+		"build": "node build.js",
 		"info": "echo %npm_package_version%",
 		"patch": "(npm version patch --no-git-tag-version) & (git add -A && git commit -m \"[RELEASE][PATCH] %npm_package_name%@%npm_package_version%\")&(git tag -a v%npm_package_version% -m \"v%npm_package_version%\")",
 		"minor": "(npm version minor --no-git-tag-version) & (git add -A && git commit -m \"[RELEASE][MINOR] %npm_package_name%@%npm_package_version%\")&(git tag -a v%npm_package_version% -m \"v%npm_package_version%\")",
