@@ -15,7 +15,5 @@
 		"major": "(npm version major --no-git-tag-version) & (git add -A && git commit -m \"[RELEASE][MAJOR] %npm_package_name%@%npm_package_version%\")&(git tag -a v%npm_package_version% -m \"v%npm_package_version%\")",
 		"publish": "(git push --quiet) & (git push --tags --quiet) & (echo Published %npm_package_name%@%npm_package_version%)"
 	},
-	"dependencies": {
-		"cross-var": "^1.1.0"
-	}
+	"dependencies": {}
 }

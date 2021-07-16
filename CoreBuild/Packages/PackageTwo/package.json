@@ -16,8 +16,5 @@
 		"publish": "(git push --quiet) & (git push --tags --quiet) & (echo Published %npm_package_name%@%npm_package_version%)",
 		"publish2npmrepo": "npm install & (echo Publishing... %npm_package_name%@%npm_package_version% to %(npm_registry_name%) & npm publish & (echo Uploaded %npm_package_name%@%npm_package_version%)"
 	},
-	"dependencies": {
-		"cross-var": "^1.1.0",
-		"npm-config": "^0.2.0"
-	}
+	"dependencies": {}
 }
