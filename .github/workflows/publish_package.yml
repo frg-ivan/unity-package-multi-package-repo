@@ -25,9 +25,10 @@ jobs:
       - run: ls -l
       - run: npm install
         #working-directory: CoreBuild/Packages/${MODULE_TO_PUBLISH}
-        working-directory: CoreBuild/Packages/packagetwo
+        working-directory: ./CoreBuild/Packages/packagetwo
       - run: ls -l
       - run: npm publish
+        working-directory: ./CoreBuild/Packages/packagetwo
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
