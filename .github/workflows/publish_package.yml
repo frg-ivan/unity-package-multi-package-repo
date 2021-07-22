@@ -24,7 +24,8 @@ jobs:
       - run: echo $MODULE_TO_PUBLISH
       - run: ls -l
       - run: npm install
-        working-directory: ./CoreBuild/Packages/${MODULE_TO_PUBLISH}
+        #working-directory: CoreBuild/Packages/${MODULE_TO_PUBLISH}
+        working-directory: CoreBuild/Packages/packagetwo
       - run: ls -l
       - run: npm publish
         env:
