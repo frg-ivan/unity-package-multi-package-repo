@@ -20,19 +20,15 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: '@frg-ivan'
       - run: ls -l
-      - run: echo "MODULE_TO_PUBLISH=$(git tag --points-at HEAD | cut -d. -f1-5 --complement)" >> $GITHUB_ENV
-      - run: echo $MODULE_TO_PUBLISH
+      - run: echo "MODULE_TO_PUBLISH_PATH=$(git tag --points-at HEAD | cut -d. -f1-5 --complement)" >> $GITHUB_ENV
+      - run: echo $MODULE_TO_PUBLISH_PATH
       - run: ls -l
       - run: npm install
         #working-directory: CoreBuild/Packages/${MODULE_TO_PUBLISH}
-        working-directory: CoreBuild/Packages/${{STAZA1}}
-        env:
-            STAZA1: $MODULE_TO_PUBLISH
+        working-directory: CoreBuild/Packages/${{MODULE_TO_PUBLISH_PATH}}
       - run: ls -l
       - run: npm publish
-        working-directory: CoreBuild/Packages/${{STAZA2}}
-        env:
-            STAZA2: $MODULE_TO_PUBLISH
+        working-directory: CoreBuild/Packages/${{MODULE_TO_PUBLISH_PATH}}
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
