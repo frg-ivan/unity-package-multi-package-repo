@@ -3,8 +3,8 @@ name: Publish package to Github Packages registry
 on:
   push:
     #Triggered when new tags pushed upstream (tags must have semver format)
-    #tags:
-    #  - 'v*.*.*'
+    tags:
+      - 'v*.*.*.[0-9@/]+'
     # commented out currently doesnt accept  v0.10.0@frg-ivan/com.company.core.packagetwo FORMAT of tag
 
 jobs:
@@ -22,7 +22,7 @@ jobs:
           scope: '@frg-ivan'
       - run: ls -l
       #- run: echo "MODULE_TO_PUBLISH_PATH=$(git tag --points-at HEAD | cut -d. -f1-5 --complement)" >> $GITHUB_ENV
-      - run: echo "MODULE_TO_PUBLISH_PATH=packagetwo" >> $GITHUB_ENV
+      - run: echo "MODULE_TO_PUBLISH_PATH=PackageTwo" >> $GITHUB_ENV
       - run: echo ${{env.MODULE_TO_PUBLISH_PATH}}
       - run: ls -l
       - run: npm install
