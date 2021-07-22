@@ -22,7 +22,7 @@ jobs:
       - run: ls -l
       - run: echo "MODULE_TO_PUBLISH=$(git tag --points-at HEAD | cut -d. -f1-5 --complement)" >> $GITHUB_ENV
       - run: echo $MODULE_TO_PUBLISH
-      - run: cd ./CoreBuild/Packages/${MODULE_TO_PUBLISH}
+      - working-directory: CoreBuild/Packages/${MODULE_TO_PUBLISH}
       - run: ls -l
       - run: npm install
       - run: npm publish
