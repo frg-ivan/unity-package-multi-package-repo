@@ -13,11 +13,13 @@ jobs:
     steps:
       - run: ls -l
       - uses: actions/checkout@v2
+      - run: ls -l
       - uses: actions/setup-node@v1
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
           scope: '@frg-ivan'
+      - run: ls -l
       - run: echo "MODULE_TO_PUBLISH=$(git tag --points-at HEAD | cut -d. -f1-5 --complement)" >> $GITHUB_ENV
       - run: echo $MODULE_TO_PUBLISH
       - run: cd ./CoreBuild/Packages/${MODULE_TO_PUBLISH}
