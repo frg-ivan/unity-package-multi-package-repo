@@ -18,11 +18,10 @@ jobs:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
           scope: '@frg-ivan'
-      - run: ls -l
       - run: echo "MODULE_TO_PUBLISH=$(git tag --points-at HEAD | cut -d. -f1-5 --complement)" >> $GITHUB_ENV
       - run: echo $MODULE_TO_PUBLISH
-      - run: cd ./${MODULE_TO_PUBLISH}
-      - run: ls
+      - run: cd ./CoreBuild/Packages/${MODULE_TO_PUBLISH}
+      - run: ls -l
       - run: npm install
       - run: npm publish
         env:
