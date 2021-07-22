@@ -1,6 +1,6 @@
 {
 	"name": "@frg-ivan/com.company.core.packagetwo",
-	"version": "0.46.0",
+	"version": "0.47.0",
 	"displayName": "PackageTwo",
 	"description": "PackageTwo description.",
 	"keywords": [],
@@ -18,7 +18,7 @@
 		"patch": "(npm version patch --no-git-tag-version) & (git add -A && git commit -m \"[RELEASE][PATCH] %npm_package_name%@%npm_package_version%\")&(git tag -a v%npm_package_version% -m \"v%npm_package_version%\")",
 		"minor": "(npm version minor --no-git-tag-version) & (git add -A && git commit -m \"[RELEASE][MINOR] %npm_package_name%@%npm_package_version%\")&(git tag -a v%npm_package_version% -m \"v%npm_package_version%\")",
 		"major": "(npm version major --no-git-tag-version) & (git add -A && git commit -m \"[RELEASE][MAJOR] %npm_package_name%@%npm_package_version%\")&(git tag -a v%npm_package_version% -m \"v%npm_package_version%\")",
-		"publish": "(git push --quiet) & (git push --tags --quiet) & (echo Published %npm_package_name%@%npm_package_version%)",
+		"upload": "(git push --quiet) & (git push --tags --quiet) & (echo Published %npm_package_name%@%npm_package_version%)",
 		"publish2npmrepo": "npm install & (echo Publishing... %npm_package_name%@%npm_package_version% to %(npm_registry_name%) & npm publish & (echo Uploaded %npm_package_name%@%npm_package_version%)"
 	},
 	"dependencies": {}
