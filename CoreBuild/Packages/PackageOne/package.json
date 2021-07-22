@@ -1,12 +1,16 @@
 {
 	"name": "@frg-ivan/com.company.core.packageone",
-	"version": "0.7.0",
+	"version": "0.8.0",
 	"displayName": "PackageOne",
 	"description": "PackageOne description.",
 	"keywords": [],
 	"type": "tool",
 	"publishConfig": {
 		"registry": "https://npm.pkg.github.com/@frg-ivan"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/frg-ivan/unity-package-multi-package-repo.git"
 	},
 	"scripts": {
 		"info": "echo %npm_package_name%@%npm_package_version%",
