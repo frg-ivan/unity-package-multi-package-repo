@@ -18,30 +18,27 @@ switch(releaseType){
 
 var bumpedVersion;
 
-//STEP [1/5] COMPILATION CHECK
+//STEP [1/4] COMPILATION CHECK
 Step_Compile();
 
-//STEP [2/5] INCREMENT PACKAGE VERSION
+//STEP [2/4] INCREMENT PACKAGE VERSION
 Step_BumpVersion();
 
-//STEP [3/5] COMMIT CHANGES
+//STEP [3/4] COMMIT CHANGES
 Step_Commit();
 
-//STEP [4/5] TAG PACKAGE
+//STEP [4/4] TAG PACKAGE
 Step_Tag();
-
-//STEP [5/5] UPLOAD PACKAGE
-Step_Uploading();
 
 console.log(`==============	 Finished ${releaseType} release ${packageJson.name}@${bumpedVersion} ==============`);
 
 function Step_Compile(){
-	console.log(`STEP [1/5] COMPILING RELEASE ....`);
+	console.log(`STEP [1/4]COMPILING RELEASE ....`);
 	//add check here
 }
 
 function Step_BumpVersion(){
-	console.log(`STEP [2/5] BUMPING PACKAGE VERSION ....`);
+	console.log(`STEP [2/4]BUMPING PACKAGE VERSION ....`);
 	const releaseTypeLowerCase = releaseType.toLowerCase();
 	execSync(`(npm version ${releaseTypeLowerCase} --no-git-tag-version)`, { stdio:[0, 1, 2] });
 	
@@ -52,18 +49,15 @@ function Step_BumpVersion(){
 }
 
 function Step_Commit(){
-	console.log(`STEP [3/5] COMMITING CHANGES TO GIT ....`);
+	console.log(`STEP [3/4]COMMITING CHANGES TO GIT ....`);
 	execSync(`(git add -A && git commit -m \"[RELEASE][${releaseType}] ${packageJson.name}@${bumpedVersion}\")`, { stdio:[0, 1, 2] });
 }
 
 function Step_Tag(){
-	console.log(`STEP [4/5] TAGGING PACKAGE ....`);
+	console.log(`STEP [4/4]TAGGING PACKAGE ....`);
 	var tag = `v${bumpedVersion}${packageJson.name}`;
 	execSync(`(git tag -a ${tag} -m \"Tag for ${releaseType} release of module ${packageJson.name}\") & git log -1 --stat --oneline`, { stdio:[0, 1, 2] });
 	console.log(`- Created tag: ${packageJson.name}@${packageJson.version}`)
 }
 
-function Step_Uploading(){
-	console.log(`STEP [5/5] UPLOADING CHANGES/TAGS TO GITHUB ....`);
-}
 
