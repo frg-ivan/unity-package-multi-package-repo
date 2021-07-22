@@ -4,32 +4,24 @@ on:
   push:
     #Triggered when new tags pushed upstream (tags must have semver format)
     tags:
-      - 'v*.*.*'
-    #  - '*/*'
-    # commented out currently doesnt accept  v0.10.0@frg-ivan/com.company.core.packagetwo FORMAT of tag
+    #  - 'v*.*.*'
+      - '*@*'
 
 jobs:
   publish-gpr:
     runs-on: ubuntu-latest
 
     steps:
-      - run: ls -l
       - uses: actions/checkout@v2
-      - run: ls -l
       - uses: actions/setup-node@v1
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
           scope: '@frg-ivan'
-      - run: ls -l
-      - run: echo "MODULE_TO_PUBLISH_PATH=$(git tag --points-at HEAD | cut -d. -f1-5 --complement)" >> $GITHUB_ENV
-      #- run: echo "MODULE_TO_PUBLISH_PATH=PackageTwo" >> $GITHUB_ENV
+      - run: echo "MODULE_TO_PUBLISH_PATH=$(git tag --points-at HEAD | cut -d@ -f1-1)" >> $GITHUB_ENV
       - run: echo ${{env.MODULE_TO_PUBLISH_PATH}}
-      - run: ls -l
       - run: npm install
-        #working-directory: CoreBuild/Packages/${MODULE_TO_PUBLISH}
         working-directory: CoreBuild/Packages/${{env.MODULE_TO_PUBLISH_PATH}}
-      - run: ls -l
       - run: npm publish
         working-directory: CoreBuild/Packages/${{env.MODULE_TO_PUBLISH_PATH}}
         env:
