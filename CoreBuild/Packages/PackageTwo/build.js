@@ -55,7 +55,7 @@ function Step_Commit(){
 
 function Step_Tag(){
 	console.log(`STEP [4/4]TAGGING PACKAGE ....`);
-	var tag = `v${bumpedVersion}@${packageJson.displayName}`;
+	var tag = `${packageJson.displayName}@v${bumpedVersion}`;
 	execSync(`(git tag -a ${tag} -m \"Tag for ${releaseType} release of module ${packageJson.name}\") & git log -1 --stat --oneline`, { stdio:[0, 1, 2] });
 	console.log(`- Created tag: ${packageJson.name}@${packageJson.version}`)
 }
