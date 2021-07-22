@@ -21,14 +21,14 @@ jobs:
           scope: '@frg-ivan'
       - run: ls -l
       - run: echo "MODULE_TO_PUBLISH_PATH=$(git tag --points-at HEAD | cut -d. -f1-5 --complement)" >> $GITHUB_ENV
-      - run: echo $MODULE_TO_PUBLISH_PATH
+      - run: echo ${{env.MODULE_TO_PUBLISH_PATH}}
       - run: ls -l
       - run: npm install
         #working-directory: CoreBuild/Packages/${MODULE_TO_PUBLISH}
-        working-directory: CoreBuild/Packages/${{MODULE_TO_PUBLISH_PATH}}
+        working-directory: CoreBuild/Packages/${{env.MODULE_TO_PUBLISH_PATH}}
       - run: ls -l
       - run: npm publish
-        working-directory: CoreBuild/Packages/${{MODULE_TO_PUBLISH_PATH}}
+        working-directory: CoreBuild/Packages/${{env.MODULE_TO_PUBLISH_PATH}}
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
