@@ -3,8 +3,9 @@ name: Publish package to Github Packages registry
 on:
   push:
     #Triggered when new tags pushed upstream (tags must have semver format)
-    tags:
-      - 'v*.*.*.*'
+    #tags:
+    #  - 'v*.*.*'
+    # commented out currently doesnt accept  v0.10.0@frg-ivan/com.company.core.packagetwo FORMAT of tag
 
 jobs:
   publish-gpr:
